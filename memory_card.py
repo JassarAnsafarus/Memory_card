@@ -75,3 +75,47 @@ class Question():
         self.wrong1 = wrong1
         self.wrong2 = wrong2
         self.wrong3 = wrong3
+
+answers = [rbtn_1, rbtn_2, rbtn_3, rbtn_4]
+
+question_list = list()
+q1 = Question('В каком году родился Амир Темур?', '1336', '1345', '1456', '1234')
+q2 = Question('В каком году была создана Парижская Коммуна?', '1871', '1870', '1970', '1781')
+q3 = Question('В каком году Парижская Коммуна потерпела поражение?', '1871', '1870', '1882', '1881')
+q4 = Question('В каком году был образован "Тройственный союз"?', '1882', '1870', '1871', '1907')
+q5 = Question('В каком году началась Франко-Прусская война?', '1870', '1871', '1848', '1852')
+q6 = Question('В каком году закончилась Франко-Прусская война?', '1870', '1871', '1907', '1904')
+q7 = Question('В каком году Россия вступила в союз с Францией и Англией?', '1907', '1904', '1882', '1893')
+q8 = Question('В каком году была образована Третья Французская Республика?', '1870', '1871', '1857', '1234')
+q9 = Question('В каком году была образована Вторая Французская Республика?', '1848', '1852', '1871', '1870')
+q10 = Question('В каком году была образована Первая Французская Республика?', '1792', '1807', '1870', '1799')
+question_list.append(q1)
+question_list.append(q2)
+question_list.append(q3)
+question_list.append(q4)
+question_list.append(q5)
+question_list.append(q6)
+question_list.append(q7)
+question_list.append(q8)
+question_list.append(q9)
+question_list.append(q10)
+
+
+
+def show_result():
+    RafdioGroupBox.hide()
+    AnsGruopBox.show()
+    btn_ok.setText('Следующий вопрос')
+
+
+def show_question():
+    RafdioGroupBox.show()
+    AnsGruopBox.hide()
+    btn_ok.setText('Ответить')
+
+    Radigrup.setExclusive(False)
+    rbtn_1.setChecked(False)
+    rbtn_2.setChecked(False)
+    rbtn_3.setChecked(False)
+    rbtn_4.setChecked(False)
+    Radigrup.setExclusive(True)
