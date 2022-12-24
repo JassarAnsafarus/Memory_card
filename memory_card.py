@@ -119,3 +119,62 @@ def show_question():
     rbtn_3.setChecked(False)
     rbtn_4.setChecked(False)
     Radigrup.setExclusive(True)
+
+
+
+
+def ask(q):
+    shuffle(answers)
+    answers[0].setText(q.right_answer)
+    answers[1].setText(q.wrong1)
+    answers[2].setText(q.wrong2)
+    answers[3].setText(q.wrong3)
+    Lb_Question.setText(q.question)
+    Lb_Correct.setText(q.right_answer)
+    show_question()
+def show_correct(res):
+    lb_Result.setText(res)
+    show_result()
+
+def check_answer():
+    if answers[0].isChecked():
+        show_correct('Правильно')
+        window.score += 1
+    else:
+        show_correct('Не правильно')
+
+def next_question():
+    window.total += 1
+    if window.total == len(question_list):
+        message_res.setText('Верных ответов: ' + str(window.score) + ' из ' + str(window.total)+'\nСтатистика верных ответов:',window.score*100/window.total,'%')
+        message_res.setWindowTitle('Результаты')
+        message_res.exec()
+        window.score = 0
+        window.total = 0
+    cur_question = randint(1,len(question_list))
+    q = question_list[cur_question]
+    
+    ask(q)
+
+
+
+def click_OK():
+    if btn_ok.text() == 'Ответить':
+        check_answer()
+    else:
+        next_question()
+
+btn_ok.clicked.connect(click_OK)
+
+window = QWidget()
+window.total = 0
+window.score = 0
+
+next_question()
+window.move(1000, 500)
+window.setLayout(Layout_card)
+window.setWindowTitle('Memory Card')
+window.show()
+
+
+app.exec_()    
